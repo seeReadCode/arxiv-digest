@@ -96,7 +96,7 @@ async function summariseViaBatch(papers) {
       custom_id: 'digest',
       params: {
         model:      MODEL,
-        max_tokens: 4096,
+        max_tokens: 8192,
         messages:   [{ role: 'user', content: buildPrompt(papers) }]
       }
     }]
@@ -132,7 +132,7 @@ async function summariseSynchronous(papers) {
 
   const msg = await client.messages.create({
     model:      MODEL,
-    max_tokens: 4096,
+    max_tokens: 8192,
     messages:   [{ role: 'user', content: buildPrompt(papers) }]
   });
 
@@ -141,21 +141,66 @@ async function summariseSynchronous(papers) {
 
 // ── Parse + validate ──────────────────────────────────────────────────────
 
+/**
+ * Attempt to repair a truncated or slightly malformed JSON string so it
+ * can be parsed. Handles the two most common Claude failure modes:
+ *   1. Response cut off mid-stream (max_tokens hit) — close open structures
+ *   2. Trailing comma before ] or } — strip it
+ */
+function repairJSON(str) {
+  // Remove trailing commas before ] or }
+  let s = str.replace(/,\s*([}\]])/g, '$1');
+
+  // Close any unclosed structures by tracking the stack
+  const opens = [];
+  let inString = false;
+  let escape   = false;
+
+  for (const ch of s) {
+    if (escape)          { escape = false; continue; }
+    if (ch === '\\')     { escape = true;  continue; }
+    if (ch === '"')      { inString = !inString; continue; }
+    if (inString)        continue;
+    if (ch === '{')      opens.push('}');
+    else if (ch === '[') opens.push(']');
+    else if (ch === '}' || ch === ']') opens.pop();
+  }
+
+  // If we're still inside a string, close it
+  if (inString) s += '"';
+
+  // Close any open arrays/objects in reverse order
+  s += opens.reverse().join('');
+
+  return s;
+}
+
 function parseResponse(raw) {
-  // Strip any accidental markdown fences
-  const cleaned = raw
+  // 1. Strip markdown fences
+  let cleaned = raw
     .replace(/^```json\s*/i, '')
     .replace(/^```\s*/, '')
     .replace(/\s*```$/, '')
     .trim();
 
-  try {
-    return JSON.parse(cleaned);
-  } catch {
-    // Try to extract a JSON object from a longer response
-    const m = cleaned.match(/\{[\s\S]*\}/);
-    if (m) return JSON.parse(m[0]);
-    throw new Error('Could not parse Claude response as JSON');
+  // 2. Try parsing as-is first (happy path)
+  try { return JSON.parse(cleaned); } catch { /* fall through */ }
+
+  // 3. Extract outermost {...} in case there's surrounding text
+  const objMatch = cleaned.match(/\{[\s\S]*\}/);
+  if (objMatch) cleaned = objMatch[0];
+
+  // 4. Try again after extraction
+  try { return JSON.parse(cleaned); } catch { /* fall through */ }
+
+  // 5. Attempt structural repair (truncation / trailing commas)
+  const repaired = repairJSON(cleaned);
+  console.warn('⚠️  JSON needed repair — response may be incomplete');
+  try { return JSON.parse(repaired); } catch (e) {
+    // Log a snippet to help diagnose future issues
+    const snippet = cleaned.slice(-120).replace(/\n/g, '↵');
+    console.error(`    Tail of raw response: …${snippet}`);
+    throw new Error(`Could not parse Claude response as JSON: ${e.message}`);
   }
 }
 

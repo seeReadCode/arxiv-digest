@@ -37,7 +37,7 @@ async function main() {
   console.log('🚀  arXiv CS Digest — nightly build starting\n');
 
   // 1. Fetch papers
-  const papers = await fetchPapers(30);
+  const papers = await fetchPapers(20);
 
   // 2. Summarise with Claude
   const digest = await summarisePapers(papers);
