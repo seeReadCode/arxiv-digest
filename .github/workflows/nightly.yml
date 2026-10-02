@@ -1,0 +1,55 @@
+name: Nightly arXiv Digest
+
+on:
+  schedule:
+    # 11:10 PM UTC — arXiv publishes new submissions around 10-11 PM UTC Sun–Thu
+    - cron: '10 23 * * *'
+  workflow_dispatch:     # also runnable manually from the Actions tab
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30   # batch API can take up to 20 min; 30 is safe
+
+    steps:
+      # ── 1. Checkout ──────────────────────────────────────────────────────
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # ── 2. Node.js ───────────────────────────────────────────────────────
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # ── 3. Install dependencies ───────────────────────────────────────────
+      - name: Install dependencies
+        run: npm ci
+
+      # ── 4. Build ─────────────────────────────────────────────────────────
+      - name: Build digest
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CLAUDE_MODEL:      claude-haiku-4-5-20251001   # swap to claude-sonnet-4-6 for better quality
+          USE_BATCH:         "true"                       # 50% cheaper; comment out for sync
+        run: npm run build
+
+      # ── 5. Commit dist/ to repo ───────────────────────────────────────────
+      #    Cloudflare Pages watches the repo and auto-deploys on push.
+      - name: Commit & push built site
+        run: |
+          git config user.name  "arxiv-digest-bot"
+          git config user.email "bot@arxiv-digest"
+          git add dist/index.html
+          # Only commit if there are changes (avoids empty commits on weekends)
+          git diff --staged --quiet || \
+            git commit -m "chore: nightly digest $(date -u +%Y-%m-%d)"
+          git push
+
+      # ── 6. Notify on failure ─────────────────────────────────────────────
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "::error::Nightly build failed. Check the logs above."
+          # Optional: add a curl command here to post to Slack/Discord/email

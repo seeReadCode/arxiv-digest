@@ -1,0 +1,16 @@
+{
+  "name": "arxiv-cs-digest",
+  "version": "1.0.0",
+  "description": "Nightly arXiv CS digest — fetches papers, summarises with Claude, publishes static HTML",
+  "type": "module",
+  "scripts": {
+    "build": "node src/build.js",
+    "dev":   "node src/build.js --dev"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.36.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
