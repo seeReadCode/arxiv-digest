@@ -132,3 +132,24 @@ arxiv-digest/
 arXiv does not publish new submissions on weekends. The cron still runs
 but the fetcher will return Friday's papers again — the build script
 commits only when `dist/index.html` actually changes, so no spurious commits.
+
+---
+
+## Build output
+
+
+```txt
+❯ npm run build-env
+
+> arxiv-cs-digest@1.0.0 build-env
+> node  --env-file=.env src/build.js
+
+🚀  arXiv CS Digest — nightly build starting
+
+📡  Fetching arXiv CS submissions…
+✅  Fetched 20 papers
+🤖  Submitting batch request (model: claude-haiku-4-5-20251001)…
+⏳  Batch msgbatch_01PHyAeZHUJyWyYkMgGFBaiM submitted — polling every 10s…
+    status: in_progress (1 remaining)
+    [...]
+```

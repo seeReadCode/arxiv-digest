@@ -4,7 +4,8 @@
   "description": "Nightly arXiv CS digest — fetches papers, summarises with Claude, publishes static HTML",
   "type": "module",
   "scripts": {
-    "build": "node src/build.js",
+    "build": "node   src/build.js",
+    "build-env": "node  --env-file=.env src/build.js",
     "dev":   "node src/build.js --env-file=.env --dev"
   },
   "dependencies": {

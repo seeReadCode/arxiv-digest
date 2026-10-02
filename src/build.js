@@ -54,6 +54,8 @@ async function main() {
   const elapsed = ((Date.now() - startMs) / 1000).toFixed(1);
   console.log(`\n✅  Done in ${elapsed}s → ${outPath}`);
   console.log(`    ${html.length.toLocaleString()} bytes`);
+  // fix should not hang on exit
+  process.exit(0);
 }
 
 main().catch(err => {
