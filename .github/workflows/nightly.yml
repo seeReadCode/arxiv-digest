@@ -10,6 +10,9 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 30   # batch API can take up to 20 min; 30 is safe
+    # Restrict permissions only to this specific job
+    permissions:
+      contents: write # Allows the job to push changes to the repo
 
     steps:
       # ── 1. Checkout ──────────────────────────────────────────────────────
