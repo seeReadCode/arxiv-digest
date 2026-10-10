@@ -19,7 +19,85 @@ function today() {
   });
 }
 
-export function buildHTML(data) {
+/**
+ * Build the "Today at a Glance" bar from free metadata aggregates.
+ * meta = { total, crossListed, primaryOnly, topCats, topVenues,
+ *           topCatName, topCatPct, venuePaperCount }
+ */
+function buildGlanceSection(meta) {
+  if (!meta) return '';
+
+  const total = meta.total || 0;
+  const crossPct = total ? Math.round(meta.crossListed / total * 100) : 0;
+
+  // Category bars — show top 8 categories
+  const catEntries = Object.entries(meta.topCats || {}).slice(0, 8);
+  const maxCatCount = catEntries[0]?.[1] || 1;
+  const catBars = catEntries.map(([cat, count]) => {
+    const pct = Math.round(count / total * 100);
+    const barW = Math.round(count / maxCatCount * 100);
+    return `
+      <div class="glance-cat-row">
+        <span class="glance-cat-label">${cat}</span>
+        <div class="glance-bar-track">
+          <div class="glance-bar-fill" style="width:${barW}%"></div>
+        </div>
+        <span class="glance-cat-pct">${pct}%</span>
+      </div>`;
+  }).join('');
+
+  // Venue pills — only show venues with at least 1 mention
+  const venuePills = Object.entries(meta.topVenues || {})
+    .sort(([,a],[,b]) => b - a)
+    .slice(0, 6)
+    .map(([venue, count]) =>
+      `<div class="venue-pill"><span class="venue-name">${venue}</span><span class="venue-count">${count}</span></div>`
+    ).join('');
+
+  const hasVenues = venuePills.length > 0;
+
+  return `
+<section class="glance-section">
+  <div class="glance-header">
+    <span class="section-title">📊 Today at a Glance</span>
+    <span class="section-meta">Free metadata · ${total.toLocaleString()} total submissions</span>
+  </div>
+  <div class="glance-body">
+    <div class="glance-col glance-numbers">
+      <div class="glance-stat">
+        <span class="glance-num">${total.toLocaleString()}</span>
+        <span class="glance-label">Total submissions today</span>
+      </div>
+      <div class="glance-stat">
+        <span class="glance-num">${meta.topCatPct || 0}%</span>
+        <span class="glance-label">In ${meta.topCatName || '—'} (top category)</span>
+      </div>
+      <div class="glance-stat">
+        <span class="glance-num">${crossPct}%</span>
+        <span class="glance-label">Cross-listed papers</span>
+      </div>
+      ${meta.venuePaperCount > 0 ? `
+      <div class="glance-stat">
+        <span class="glance-num">${meta.venuePaperCount}</span>
+        <span class="glance-label">Mention a major venue</span>
+      </div>` : ''}
+    </div>
+    <div class="glance-col glance-cats">
+      <div class="glance-col-title">Category breakdown</div>
+      ${catBars}
+    </div>
+    ${hasVenues ? `
+    <div class="glance-col glance-venues">
+      <div class="glance-col-title">Venue mentions</div>
+      <div class="venue-pills">${venuePills}</div>
+    </div>` : ''}
+  </div>
+</section>`;
+}
+
+export function buildHTML(data, meta) {
+  const glanceSection = buildGlanceSection(meta);
+
   const calloutCards = (data.callouts || []).slice(0, 4).map(c => {
     const absUrl = c.id ? `https://arxiv.org/abs/${c.id}` : null;
     const pdfUrl = c.id ? `https://arxiv.org/pdf/${c.id}` : null;
@@ -197,6 +275,28 @@ export function buildHTML(data) {
   .field-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
   .field-chip{font-family:var(--mono);font-size:9px;letter-spacing:.06em;padding:4px 9px;border-radius:3px;border:.5px solid var(--border-strong);color:var(--text-muted);text-transform:uppercase;cursor:default}
   .footer{padding:24px;border-top:.5px solid var(--border-strong);font-family:var(--mono);font-size:10px;color:var(--text-dim);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  /* Today at a Glance */
+  .glance-section{border-bottom:.5px solid var(--border-strong)}
+  .glance-header{padding:14px 24px 10px;display:flex;align-items:center;justify-content:space-between;border-bottom:.5px solid var(--border)}
+  .glance-body{display:flex;gap:0;overflow:hidden}
+  .glance-col{padding:16px 20px;border-right:.5px solid var(--border);flex:1}
+  .glance-col:last-child{border-right:none}
+  .glance-numbers{display:flex;flex-direction:column;gap:12px;max-width:200px;flex:0 0 auto}
+  .glance-stat{display:flex;flex-direction:column;gap:1px}
+  .glance-num{font-family:var(--mono);font-size:18px;font-weight:500;color:var(--cyan)}
+  .glance-label{font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.07em}
+  .glance-col-title{font-family:var(--mono);font-size:9px;color:var(--text-dim);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+  .glance-cat-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+  .glance-cat-label{font-family:var(--mono);font-size:10px;color:var(--text-muted);min-width:52px;flex-shrink:0}
+  .glance-bar-track{flex:1;height:5px;background:rgba(240,237,230,0.06);border-radius:2px;overflow:hidden}
+  .glance-bar-fill{height:100%;background:var(--cyan);opacity:.7;border-radius:2px;transition:width .3s}
+  .glance-cat-pct{font-family:var(--mono);font-size:9px;color:var(--text-dim);min-width:28px;text-align:right}
+  .glance-venues{flex:0 0 auto;max-width:260px}
+  .venue-pills{display:flex;flex-wrap:wrap;gap:6px}
+  .venue-pill{display:flex;align-items:center;gap:5px;background:var(--navy-card);border-radius:4px;padding:5px 9px;border:.5px solid var(--border-strong)}
+  .venue-name{font-family:var(--mono);font-size:10px;color:var(--text-primary);letter-spacing:.04em}
+  .venue-count{font-family:var(--mono);font-size:10px;color:var(--cyan)}
+  @media(max-width:700px){.glance-body{flex-direction:column}.glance-numbers{max-width:none;flex-direction:row;flex-wrap:wrap}.glance-venues{max-width:none}}
   /* Links */
   a.paper-link{color:inherit;text-decoration:none}
   a.paper-link:hover{color:var(--cyan);text-decoration:underline;text-decoration-color:rgba(0,200,224,.4);text-underline-offset:3px}
@@ -230,6 +330,8 @@ export function buildHTML(data) {
   <div class="stat-row">${statItems}</div>
 </section>
 
+${glanceSection}
+
 <div class="main-grid">
   <div>
     <div class="section-header">
@@ -240,7 +342,7 @@ export function buildHTML(data) {
 
     <div class="section-header">
       <span class="section-title">📄 Recent Submissions</span>
-      <span class="section-meta">Showing ${(data.papers||[]).length} of today's submissions</span>
+      <span class="section-meta">Showing ${(data.papers||[]).length} curated${meta?.total ? ` of ${meta.total.toLocaleString()} total` : ''} submissions</span>
     </div>
     ${feedItems}
   </div>
