@@ -44,17 +44,18 @@ jobs:
         run: |
           git config user.name  "arxiv-digest-bot"
           git config user.email "bot@arxiv-digest"
-          git add dist/index.html
+          git add dist/*
           # Only commit if there are changes (avoids empty commits on weekends)
           git diff --staged --quiet || \
             git commit -m "chore: nightly digest $(date -u +%Y-%m-%d)"
           git push
 
-      - name: Deploy to GH Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: dist # Points exactly to your dist folder
-          branch: gh-pages
+      # 5b. Optional: Deploy to GH Pages (if you want to use GitHub Pages instead of Cloudflare Pages)
+      # - name: Deploy to GH Pages
+      #   uses: JamesIves/github-pages-deploy-action@v4
+      #   with:
+      #     folder: dist # Points exactly to your dist folder
+      #     branch: gh-pages
   
       # ── 6. Notify on failure ─────────────────────────────────────────────
       - name: Notify on failure
