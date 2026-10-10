@@ -6,7 +6,7 @@
   "scripts": {
     "build": "node   src/build.js",
     "build-env": "node  --env-file=.env src/build.js",
-    "dev":   "node src/build.js --env-file=.env --dev"
+    "dev":   "node  --env-file=.env src/build.js --dev"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.36.0"
