@@ -44,6 +44,7 @@ SCHEMA:
   ],
   "papers": [
     {
+      "id": "arxiv id string e.g. 2605.04595",
       "index": "zero-padded string e.g. 01",
       "title": "paper title (may shorten slightly)",
       "summary": "1-2 sentence plain-English summary: problem, approach, result",
@@ -62,6 +63,7 @@ SCHEMA:
     "citations": "approximate citation count e.g. 4,200+",
     "venue": "most notable recent venue abbreviation e.g. NeurIPS '25",
     "paperTitle": "their paper title shortened to ~8 words",
+    "paperId": "arxiv id of their paper e.g. 2605.04595",
     "paperVenue": "venue or arXiv ID"
   },
   "trends": [

@@ -20,31 +20,48 @@ function today() {
 }
 
 export function buildHTML(data) {
-  const calloutCards = (data.callouts || []).slice(0, 4).map(c => `
+  const calloutCards = (data.callouts || []).slice(0, 4).map(c => {
+    const absUrl = c.id ? `https://arxiv.org/abs/${c.id}` : null;
+    const pdfUrl = c.id ? `https://arxiv.org/pdf/${c.id}` : null;
+    return `
     <div class="callout-card">
       <span class="callout-tag ${c.tagClass || 'tag-ai'}">${c.tag}</span>
-      <div class="callout-title">${c.title}</div>
+      <div class="callout-title">${absUrl
+        ? `<a class="paper-link" href="${absUrl}" target="_blank" rel="noopener">${c.title}</a>`
+        : c.title}</div>
       <p class="callout-body">${c.body}</p>
       <div class="callout-finding">${c.finding}</div>
       <div class="callout-meta">
         <span class="callout-authors">${c.authors}</span>
-        <span class="callout-id">${c.id}</span>
+        <span class="callout-links">${absUrl
+          ? `<a class="id-link" href="${absUrl}" target="_blank" rel="noopener">${c.id}</a>`
+          : c.id}${pdfUrl
+          ? ` <a class="pdf-link" href="${pdfUrl}" target="_blank" rel="noopener">PDF</a>`
+          : ''}</span>
       </div>
-    </div>`).join('');
+    </div>`;
+  }).join('');
 
   const feedItems = (data.papers || []).map((p, i) => {
-    const tc   = tagColor((p.tags || []).join(' '));
+    const tc    = tagColor((p.tags || []).join(' '));
     const tags  = (p.tags || []).slice(0, 2).map(t =>
       `<span class="feed-tag ${tc}">${t}</span>`).join('');
     const venue = p.venue
       ? `<span class="feed-venue">${p.venue}</span>` : '';
+    const absUrl = p.id ? `https://arxiv.org/abs/${p.id}` : null;
+    const pdfUrl = p.id ? `https://arxiv.org/pdf/${p.id}` : null;
+    const pdfPill = pdfUrl
+      ? `<a class="pdf-link" href="${pdfUrl}" target="_blank" rel="noopener">PDF</a>` : '';
+    const titleEl = absUrl
+      ? `<a class="paper-link" href="${absUrl}" target="_blank" rel="noopener">${p.title}</a>`
+      : p.title;
     return `
     <div class="feed-item">
       <span class="feed-index">${String(i + 1).padStart(2, '0')}</span>
       <div>
-        <div class="feed-title">${p.title}</div>
+        <div class="feed-title">${titleEl}</div>
         <p class="feed-summary">${p.summary}</p>
-        <div class="feed-row">${tags}${venue}<span class="feed-authors">${p.authors}</span></div>
+        <div class="feed-row">${tags}${venue}<span class="feed-authors">${p.authors}</span>${pdfPill}</div>
       </div>
     </div>`;
   }).join('');
@@ -63,9 +80,13 @@ export function buildHTML(data) {
       <div class="r-stat"><div class="r-stat-num">${r.citations||'—'}</div><div class="r-stat-label">Citations</div></div>
       <div class="r-stat"><div class="r-stat-num" style="font-size:11px;padding-top:2px">${r.venue||'—'}</div><div class="r-stat-label">Latest venue</div></div>
     </div>
-    <div class="r-paper">
-      <div class="r-paper-title">${r.paperTitle||'—'}</div>
-      <div class="r-paper-venue">${r.paperVenue||''}</div>
+    <div class="r-paper">${r.paperId
+      ? `<a class="paper-link" href="https://arxiv.org/abs/${r.paperId}" target="_blank" rel="noopener">`
+      : ''}<div class="r-paper-title">${r.paperTitle||'—'}</div>${r.paperId ? '</a>' : ''}
+      <div class="r-paper-links">
+        <span class="r-paper-venue">${r.paperVenue||''}</span>
+        ${r.paperId ? `<a class="pdf-link" href="https://arxiv.org/pdf/${r.paperId}" target="_blank" rel="noopener">PDF</a>` : ''}
+      </div>
     </div>`;
 
   const trendItems = (data.trends || []).slice(0, 5).map(t => {
@@ -176,6 +197,15 @@ export function buildHTML(data) {
   .field-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
   .field-chip{font-family:var(--mono);font-size:9px;letter-spacing:.06em;padding:4px 9px;border-radius:3px;border:.5px solid var(--border-strong);color:var(--text-muted);text-transform:uppercase;cursor:default}
   .footer{padding:24px;border-top:.5px solid var(--border-strong);font-family:var(--mono);font-size:10px;color:var(--text-dim);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  /* Links */
+  a.paper-link{color:inherit;text-decoration:none}
+  a.paper-link:hover{color:var(--cyan);text-decoration:underline;text-decoration-color:rgba(0,200,224,.4);text-underline-offset:3px}
+  a.id-link{font-family:var(--mono);font-size:10px;color:var(--text-dim);text-decoration:none}
+  a.id-link:hover{color:var(--cyan)}
+  a.pdf-link{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);text-decoration:none;border:.5px solid rgba(245,166,35,.3);padding:2px 7px;border-radius:3px;white-space:nowrap}
+  a.pdf-link:hover{background:rgba(245,166,35,.08)}
+  .callout-links{display:flex;align-items:center;gap:8px}
+  .r-paper-links{display:flex;align-items:center;justify-content:space-between;margin-top:4px}
   @media(max-width:700px){
     .main-grid{grid-template-columns:1fr}
     .sidebar{border-left:none;border-top:.5px solid var(--border-strong)}
