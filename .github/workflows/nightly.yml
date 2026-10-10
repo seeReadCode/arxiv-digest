@@ -50,9 +50,18 @@ jobs:
             git commit -m "chore: nightly digest $(date -u +%Y-%m-%d)"
           git push
 
+      - name: Deploy to GH Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist # Points exactly to your dist folder
+          branch: gh-pages
+  
       # ── 6. Notify on failure ─────────────────────────────────────────────
       - name: Notify on failure
         if: failure()
         run: |
           echo "::error::Nightly build failed. Check the logs above."
           # Optional: add a curl command here to post to Slack/Discord/email
+
+
+
