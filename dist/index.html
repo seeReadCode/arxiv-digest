@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>arXiv CS — Mon, 12 Oct 2026</title>
+<title>arXiv CS — Tue, 13 Oct 2026</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -135,16 +135,16 @@
 <header class="site-header">
   <div class="site-logo">arXiv<span> / cs</span></div>
   <div class="header-right">
-    <div class="date-badge">Mon, 12 Oct 2026</div>
+    <div class="date-badge">Tue, 13 Oct 2026</div>
     <div class="build-badge">✦ Nightly build</div>
   </div>
 </header>
 
 <section class="hero">
   <p class="hero-eyebrow">Daily Digest · Computer Science</p>
-  <h1 class="hero-headline">AI Agents Evolve: <em>Tools, Trust</em>, and Real Robots</h1>
-  <p class="hero-summary">Today's submissions reveal a maturing ecosystem where language model agents venture beyond text into physical and tool-rich environments. The dominant theme centers on securing LLM-tool boundaries, adapting pre-trained policies to novel scenes, and grounding abstract reasoning in multimodal perception. What's striking: researchers are solving the hard problem of making agents reliable when deploying them to real robots and users' homes—moving from lab benchmarks to genuine deployment constraints.</p>
-  <div class="stat-row"><div class="stat-item"><span class="stat-num">25</span><span class="stat-label">Papers today</span></div><div class="stat-item"><span class="stat-num">44%</span><span class="stat-label">Robotics & Vision focus</span></div><div class="stat-item"><span class="stat-num">8</span><span class="stat-label">Appearing in ECCV/NeurIPS venues</span></div></div>
+  <h1 class="hero-headline">LLM Agents Scale Up: Trust, Tools, and <em>Embodied</em> Reasoning</h1>
+  <p class="hero-summary">Today's papers chart the maturation of language model agents from orchestration security to embodied robotics. The dominant theme is grounding—whether through tool reliability, multimodal alignment, or physical simulation—as researchers move beyond text-only reasoning toward systems that must operate reliably in real environments. A particularly striking trend: the shift from fine-tuning isolated models to full-pipeline adaptation, where agents learn from human videos and interact with distributed knowledge systems.</p>
+  <div class="stat-row"><div class="stat-item"><span class="stat-num">25</span><span class="stat-label">papers today</span></div><div class="stat-item"><span class="stat-num">44%</span><span class="stat-label">computer vision & robotics focus</span></div><div class="stat-item"><span class="stat-num">8</span><span class="stat-label">papers on agent systems & adaptation</span></div><div class="stat-item"><span class="stat-num">ECCV, NeurIPS, ICCV</span><span class="stat-label">top venues represented</span></div></div>
 </section>
 
 
@@ -250,42 +250,42 @@
     <div class="callout-grid">
     <div class="callout-card">
       <span class="callout-tag tag-ai">AI Safety</span>
-      <div class="callout-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13651" target="_blank" rel="noopener">Securing LLM Tool Calls via Semantic Fuzzing Framework</a></div>
-      <p class="callout-body">ToFu automatically derives security checks for external tools that LLM agents invoke, addressing the gap where orchestrators may misinterpret model outputs. This matters because agents interacting with real systems—databases, APIs, robots—need guardrails beyond model alignment.</p>
-      <div class="callout-finding">ToFu discovers semantic violations in LLM tool invocations that traditional input validation misses by leveraging CWE-guided sanitizer patterns.</div>
+      <div class="callout-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13651" target="_blank" rel="noopener">Fuzzing the LLM-Tool Trust Boundary Automatically</a></div>
+      <p class="callout-body">ToFu automatically derives semantic security checks for LLM tools from metadata, addressing the critical gap where tool semantics go unenforced when LLMs generate arguments. This matters because as agents orchestrate external tools, malformed or adversarial inputs can cascade into system-level failures.</p>
+      <div class="callout-finding">ToFu uses CWE-guided sanitizers to specialize security checks per tool, closing a previously underexplored attack surface in agentic systems.</div>
       <div class="callout-meta">
-        <span class="callout-authors">Islam Ananto, Prevost-Avenel, Kim et al.</span>
+        <span class="callout-authors">Islam Ananto, Prevost-Avenel et al.</span>
         <span class="callout-links"><a class="id-link" href="https://arxiv.org/abs/2610.13651" target="_blank" rel="noopener">2610.13651</a> <a class="pdf-link" href="https://arxiv.org/pdf/2610.13651" target="_blank" rel="noopener">PDF</a></span>
       </div>
     </div>
     <div class="callout-card">
       <span class="callout-tag tag-ro">Robotics</span>
-      <div class="callout-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13945" target="_blank" rel="noopener">Personalizing Robot Policies from Phone Scans Alone</a></div>
-      <p class="callout-body">Splat2Act bridges the gap between generalist manipulation models and real home environments by converting phone scans and object photos into sim-to-real adaptations. Users can now deploy pre-trained policies to unfamiliar scenes without collecting expensive real-world demonstrations.</p>
-      <div class="callout-finding">A pretrained VLA achieving 0% success in unseen home scenes reaches functional performance through scene-specific adaptation from captured 3D data and object images.</div>
+      <div class="callout-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13732" target="_blank" rel="noopener">Pre-trained Robot Policies Learn from Human Video Supervision</a></div>
+      <p class="callout-body">LAPT-Scale sidesteps the expensive embodied robot data collection problem by learning latent actions from large-scale human egocentric videos, then adapting those priors to actual robot tasks. This dramatically scales generalist robot policies without requiring millions of robot interactions.</p>
+      <div class="callout-finding">Latent action pre-training on human videos transfers effectively to downstream robotic manipulation with minimal real-world finetuning.</div>
       <div class="callout-meta">
-        <span class="callout-authors">Ye, Jaganathan, Lim et al.</span>
-        <span class="callout-links"><a class="id-link" href="https://arxiv.org/abs/2610.13945" target="_blank" rel="noopener">2610.13945</a> <a class="pdf-link" href="https://arxiv.org/pdf/2610.13945" target="_blank" rel="noopener">PDF</a></span>
-      </div>
-    </div>
-    <div class="callout-card">
-      <span class="callout-tag tag-cv">Computer Vision</span>
-      <div class="callout-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13732" target="_blank" rel="noopener">Identity Privacy Protection via Imperceptible Video Perturbations</a></div>
-      <p class="callout-body">KVeil won ECCV 2026's LifeGenIP Challenge by degrading facial video reference information while staying imperceptible, blocking personalized video generation attacks. As deepfakes threaten identity safety, this represents a practical defense mechanism scalable to real deployments.</p>
-      <div class="callout-finding">Reference Capacity Collapse losses render facial videos unsuitable for identity cloning while preserving visual quality below human perceptibility thresholds.</div>
-      <div class="callout-meta">
-        <span class="callout-authors">Li, Xing, Li et al.</span>
+        <span class="callout-authors">Xiang, Liu et al.</span>
         <span class="callout-links"><a class="id-link" href="https://arxiv.org/abs/2610.13732" target="_blank" rel="noopener">2610.13732</a> <a class="pdf-link" href="https://arxiv.org/pdf/2610.13732" target="_blank" rel="noopener">PDF</a></span>
       </div>
     </div>
     <div class="callout-card">
-      <span class="callout-tag tag-ml">Machine Learning</span>
-      <div class="callout-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13812" target="_blank" rel="noopener">Flow Matching Unifies Diffusion and Inverse Problem Solving</a></div>
-      <p class="callout-body">β-Flow provides a single plug-and-play framework generalizing over flow-matching and diffusion priors for linear inverse problems, with tunable correlation and confidence parameters. This resolves brittleness in prior methods that required bespoke approaches per model class.</p>
-      <div class="callout-finding">Exact Gaussian conditioning on flow trajectories enables a unified posterior sampling method indexed by correlation parameter β that recovers both flow and diffusion limits.</div>
+      <span class="callout-tag tag-cv">Computer Vision</span>
+      <div class="callout-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13947" target="_blank" rel="noopener">Physically Grounded 3D Assets via Multi-Agent Simulation</a></div>
+      <p class="callout-body">Artisan extends asset generation from appearance to physics, using multi-agent pipelines with physical simulation feedback to create 3D objects that not only look right but move, balance, and collide realistically. This bridges the gap between geometric generation and functional digital twins.</p>
+      <div class="callout-finding">The system generates collision-free articulated motion with accurate mass and material properties by integrating procedural generation with physics validation loops.</div>
       <div class="callout-meta">
-        <span class="callout-authors">Deveney, Bogensperger, Wong</span>
-        <span class="callout-links"><a class="id-link" href="https://arxiv.org/abs/2610.13812" target="_blank" rel="noopener">2610.13812</a> <a class="pdf-link" href="https://arxiv.org/pdf/2610.13812" target="_blank" rel="noopener">PDF</a></span>
+        <span class="callout-authors">Cai, Zhu et al.</span>
+        <span class="callout-links"><a class="id-link" href="https://arxiv.org/abs/2610.13947" target="_blank" rel="noopener">2610.13947</a> <a class="pdf-link" href="https://arxiv.org/pdf/2610.13947" target="_blank" rel="noopener">PDF</a></span>
+      </div>
+    </div>
+    <div class="callout-card">
+      <span class="callout-tag tag-ml">Machine Learning</span>
+      <div class="callout-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13944" target="_blank" rel="noopener">Cross-Modal Latent Alignment in Independent Image Generators</a></div>
+      <p class="callout-body">InstantFusion discovers that independently trained diffusion/flow models exhibit similar latent spatial organization and can hand off intermediate states between architectures. This enables seamless model composition and cross-model adaptation without retraining.</p>
+      <div class="callout-finding">Heterogeneous generators share an intrinsic latent compatibility that permits direct intermediate state transfer, enabling unified inference pipelines across model families.</div>
+      <div class="callout-meta">
+        <span class="callout-authors">Dai, Bu et al.</span>
+        <span class="callout-links"><a class="id-link" href="https://arxiv.org/abs/2610.13944" target="_blank" rel="noopener">2610.13944</a> <a class="pdf-link" href="https://arxiv.org/pdf/2610.13944" target="_blank" rel="noopener">PDF</a></span>
       </div>
     </div></div>
 
@@ -298,15 +298,15 @@
       <span class="feed-index">01</span>
       <div>
         <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13651" target="_blank" rel="noopener">ToFu: Exploiting and Fuzzing the LLM-Orchestrator-Tool Trust Boundary</a></div>
-        <p class="feed-summary">Addresses security gaps where LLM-generated tool arguments bypass orchestrator validation. ToFu auto-derives semantic checks from tool metadata and CWE patterns to catch violations that simple input sanitization misses.</p>
-        <div class="feed-row"><span class="feed-tag tag-ai">cs.CR</span><span class="feed-authors">Islam Ananto, Prevost-Avenel, Kim</span><a class="pdf-link" href="https://arxiv.org/pdf/2610.13651" target="_blank" rel="noopener">PDF</a></div>
+        <p class="feed-summary">Introduces ToFu, a framework that automatically derives semantic security checks for LLM-orchestrated tools from metadata and CWE-guided sanitizers. Addresses the vulnerability where LLM-generated arguments bypass tool-level enforcement, enabling systematic fuzzing of this critical interface.</p>
+        <div class="feed-row"><span class="feed-tag tag-ai">cs.CR</span><span class="feed-tag tag-ai">cs.AI</span><span class="feed-authors">Islam Ananto, Prevost-Avenel, Kim</span><a class="pdf-link" href="https://arxiv.org/pdf/2610.13651" target="_blank" rel="noopener">PDF</a></div>
       </div>
     </div>
     <div class="feed-item">
       <span class="feed-index">02</span>
       <div>
-        <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13826" target="_blank" rel="noopener">OpenPA: Forced-alignment-free Multi-granular Pronunciation Assessment</a></div>
-        <p class="feed-summary">Proposes OpenPA for automatic pronunciation assessment without forced alignment, using Whisper's cross-attention to jointly predict word and utterance-level scores. Enables free-form assessment across heterogeneous response settings via mixed-transcript adaptation.</p>
+        <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13826" target="_blank" rel="noopener">OpenPA: Forced-alignment-free Pronunciation Assessment with Mixed-transcript Adaptation</a></div>
+        <p class="feed-summary">Proposes OpenPA, an automatic pronunciation assessment framework leveraging Whisper's cross-attention to jointly predict word- and utterance-level scores without forced alignment. Demonstrates end-to-end learning across heterogeneous transcription settings.</p>
         <div class="feed-row"><span class="feed-tag tag-ml">cs.CL</span><span class="feed-tag tag-ml">cs.SD</span><span class="feed-authors">Chao, Yan, Chen</span><a class="pdf-link" href="https://arxiv.org/pdf/2610.13826" target="_blank" rel="noopener">PDF</a></div>
       </div>
     </div>
@@ -314,7 +314,7 @@
       <span class="feed-index">03</span>
       <div>
         <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13783" target="_blank" rel="noopener">UkrMeme: Multimodal Explainable Persuasion Detection in Ukrainian Memes</a></div>
-        <p class="feed-summary">Introduces UkrMeme dataset of 200 Ukrainian wartime memes annotated for persuasion techniques and evaluates vision-language models on detecting propaganda across text and image modalities.</p>
+        <p class="feed-summary">Introduces UkrMeme, a dataset of 200 Ukrainian wartime memes annotated for persuasion techniques, and evaluates vision-language models in zero-shot settings. Addresses the understudied intersection of visual rhetoric, text, and conflict-driven messaging.</p>
         <div class="feed-row"><span class="feed-tag tag-cv">cs.AI</span><span class="feed-tag tag-cv">cs.CL</span><span class="feed-authors">Andrushko, Schmitt, Solopova</span><a class="pdf-link" href="https://arxiv.org/pdf/2610.13783" target="_blank" rel="noopener">PDF</a></div>
       </div>
     </div>
@@ -322,7 +322,7 @@
       <span class="feed-index">04</span>
       <div>
         <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13687" target="_blank" rel="noopener">X-AVDD: Cross-Attentive Audio-Visual Dataset Distillation</a></div>
-        <p class="feed-summary">Proposes X-AVDD for memory-efficient audio-visual dataset distillation using cross-attention to preserve cross-modal semantic correspondence while synthesizing small proxy datasets.</p>
+        <p class="feed-summary">Presents X-AVDD, a memory-efficient dataset distillation method for audio-visual data that uses cross-attention to preserve inter-modal semantic correspondence. Scales to larger architectures and higher samples-per-class settings than prior approaches.</p>
         <div class="feed-row"><span class="feed-tag tag-cv">cs.CV</span><span class="feed-tag tag-cv">cs.LG</span><span class="feed-authors">Mohanty, Reddy, Mopuri</span><a class="pdf-link" href="https://arxiv.org/pdf/2610.13687" target="_blank" rel="noopener">PDF</a></div>
       </div>
     </div>
@@ -330,15 +330,15 @@
       <span class="feed-index">05</span>
       <div>
         <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13675" target="_blank" rel="noopener">Can Multimodal Decision Models Classify Breast Ultrasound Images?</a></div>
-        <p class="feed-summary">Benchmarks CLEF and CLEF-Flash multimodal models on 2818 breast ultrasound images across three datasets, varying prompts and classification tasks to assess structured prediction for medical imaging.</p>
-        <div class="feed-row"><span class="feed-tag tag-cv">cs.CV</span><span class="feed-authors">Tran, Tran, Tan</span><a class="pdf-link" href="https://arxiv.org/pdf/2610.13675" target="_blank" rel="noopener">PDF</a></div>
+        <p class="feed-summary">Benchmarks CLEF and CLEF-Flash multimodal models on 2818 breast ultrasound images across three datasets with binary and three-way classification tasks. Tests robustness to prompt variations without preprocessing or parameter tuning.</p>
+        <div class="feed-row"><span class="feed-tag tag-cv">cs.CV</span><span class="feed-authors">Tran, Hai, Tan</span><a class="pdf-link" href="https://arxiv.org/pdf/2610.13675" target="_blank" rel="noopener">PDF</a></div>
       </div>
     </div>
     <div class="feed-item">
       <span class="feed-index">06</span>
       <div>
-        <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13663" target="_blank" rel="noopener">A Multi-Agent LLM System for Automated Tuning of Specialized Neural Networks</a></div>
-        <p class="feed-summary">Presents a multi-agent LLM framework with analyst, coder, and recorder roles to automatically tune machine learning components across diverse model types in a sandboxed execution environment.</p>
+        <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13663" target="_blank" rel="noopener">A Multi-Agent LLM System for Automated Tuning of Specialized Neural Network Models</a></div>
+        <p class="feed-summary">Proposes a multi-agent LLM framework with analyst, coder, and recorder roles to automate hyperparameter and component tuning across diverse model classes. Uses sandboxed execution and experiment logging for transferable optimization.</p>
         <div class="feed-row"><span class="feed-tag tag-ml">cs.AI</span><span class="feed-tag tag-ml">cs.CL</span><span class="feed-authors">Moloshnikov, Kunitsyn, Sboev</span><a class="pdf-link" href="https://arxiv.org/pdf/2610.13663" target="_blank" rel="noopener">PDF</a></div>
       </div>
     </div>
@@ -346,7 +346,7 @@
       <span class="feed-index">07</span>
       <div>
         <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13648" target="_blank" rel="noopener">SPARQL-LLM in the TEXT2SPARQL 2026 Challenge</a></div>
-        <p class="feed-summary">Describes SPARQL-LLM, an open-source knowledge graph question-answering system that translates natural language to SPARQL queries. Ranks first in TEXT2SPARQL 2026 among eight competing systems.</p>
+        <p class="feed-summary">Describes SPARQL-LLM, an open-source Knowledge Graph Question Answering system that translates natural language to SPARQL queries. Ranked first overall in the TEXT2SPARQL 2026 challenge among eight competitors.</p>
         <div class="feed-row"><span class="feed-tag tag-ai">cs.IR</span><span class="feed-venue">TEXT2SPARQL 2026</span><span class="feed-authors">Smeros, Emonet, Wang</span><a class="pdf-link" href="https://arxiv.org/pdf/2610.13648" target="_blank" rel="noopener">PDF</a></div>
       </div>
     </div>
@@ -354,31 +354,31 @@
       <span class="feed-index">08</span>
       <div>
         <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13590" target="_blank" rel="noopener">Lower Bounds for Randomized Linear-Oracle Optimization over Strongly Convex Sets</a></div>
-        <p class="feed-summary">Analyzes brittleness in recent 1/T² lower bounds for Frank-Wolfe algorithms, showing how small initialization errors can amplify under slow exact-line-search, improving theoretical understanding of optimization.</p>
+        <p class="feed-summary">Analyzes brittleness in recent lower bounds for Frank-Wolfe algorithms, showing how prescribed slow line-search trajectories can amplify initialization errors exponentially. Refines theoretical understanding of convex optimization limits.</p>
         <div class="feed-row"><span class="feed-tag tag-ml">cs.LG</span><span class="feed-authors">Pokutta</span><a class="pdf-link" href="https://arxiv.org/pdf/2610.13590" target="_blank" rel="noopener">PDF</a></div>
       </div>
     </div>
     <div class="feed-item">
       <span class="feed-index">09</span>
       <div>
-        <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13578" target="_blank" rel="noopener">RARA: Robust Policy Fine-Tuning via Retrieval-Anchored Representation Alignment</a></div>
-        <p class="feed-summary">Proposes RARA to adapt pre-trained VLA policies to new robotic tasks with few demonstrations while preserving generalization by anchoring representations to retrieved in-distribution examples.</p>
+        <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13578" target="_blank" rel="noopener">RARA: Robust Policy Fine-Tuning through Retrieval-Anchored Representation Alignment</a></div>
+        <p class="feed-summary">Introduces RARA, a two-stage adaptation method for pre-trained robot policies that retrieves similar behaviors and aligns representations to maintain generalization under distribution shift. Tested on Vision-Language-Action models with few demonstrations.</p>
         <div class="feed-row"><span class="feed-tag tag-cv">cs.RO</span><span class="feed-tag tag-cv">cs.CV</span><span class="feed-authors">Kang, Lee, Zhuang</span><a class="pdf-link" href="https://arxiv.org/pdf/2610.13578" target="_blank" rel="noopener">PDF</a></div>
       </div>
     </div>
     <div class="feed-item">
       <span class="feed-index">10</span>
       <div>
-        <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13947" target="_blank" rel="noopener">Towards Physically Grounded Articulated 3D Assets</a></div>
-        <p class="feed-summary">Introduces Artisan, a multi-agent pipeline for generating physically plausible articulated 3D assets with collision-free motion, gravity stability, and accurate mass properties beyond geometry and appearance.</p>
-        <div class="feed-row"><span class="feed-tag tag-cv">cs.CV</span><span class="feed-authors">Cai, Zhu, Shang</span><a class="pdf-link" href="https://arxiv.org/pdf/2610.13947" target="_blank" rel="noopener">PDF</a></div>
+        <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13947" target="_blank" rel="noopener">Towards Physically Grounded Articulated 3D Assets: A Multi-Agent Pipeline and Benchmark</a></div>
+        <p class="feed-summary">Presents Artisan, which extends articulated 3D asset generation with multi-agent physical simulation feedback, ensuring collision-free motion, stability, and accurate mass/material properties. Introduces a comprehensive benchmark for functional asset generation.</p>
+        <div class="feed-row"><span class="feed-tag tag-cv">cs.CV</span><span class="feed-venue">ECCV 2026</span><span class="feed-authors">Cai, Zhu, Shang</span><a class="pdf-link" href="https://arxiv.org/pdf/2610.13947" target="_blank" rel="noopener">PDF</a></div>
       </div>
     </div>
     <div class="feed-item">
       <span class="feed-index">11</span>
       <div>
-        <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13944" target="_blank" rel="noopener">InstantFusion: Shared Latent Interface for Heterogeneous Image Generators</a></div>
-        <p class="feed-summary">Uncovers cross-model latent compatibility between independently trained diffusion models and proposes methods to hand off intermediate states between unaligned generators for seamless image synthesis.</p>
+        <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13944" target="_blank" rel="noopener">InstantFusion: A Shared Latent Interface for Heterogeneous Image Generators</a></div>
+        <p class="feed-summary">Uncovers cross-model latent compatibility in independently trained diffusion/flow models, demonstrating that intermediate states can transfer directly between unaligned architectures. Enables plug-and-play composition of heterogeneous generators.</p>
         <div class="feed-row"><span class="feed-tag tag-cv">cs.CV</span><span class="feed-authors">Dai, Bu, Zhou</span><a class="pdf-link" href="https://arxiv.org/pdf/2610.13944" target="_blank" rel="noopener">PDF</a></div>
       </div>
     </div>
@@ -386,15 +386,15 @@
       <span class="feed-index">12</span>
       <div>
         <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13889" target="_blank" rel="noopener">RATED: Reliability-Aware AI Agent Tool Retrieval via Execution Dynamics</a></div>
-        <p class="feed-summary">Proposes RATED, a tool retrieval framework combining semantic matching with contextual bandits for dynamic reliability re-ranking based on real-time execution feedback for LLM agents.</p>
+        <p class="feed-summary">Proposes RATED, a tool retrieval framework combining semantic matching with dynamic reliability adaptation via contextual bandits. Ranks tool candidates based on real-time execution feedback rather than semantic relevance alone.</p>
         <div class="feed-row"><span class="feed-tag tag-ai">cs.AI</span><span class="feed-tag tag-ai">cs.IR</span><span class="feed-authors">Chen, Liao</span><a class="pdf-link" href="https://arxiv.org/pdf/2610.13889" target="_blank" rel="noopener">PDF</a></div>
       </div>
     </div>
     <div class="feed-item">
       <span class="feed-index">13</span>
       <div>
-        <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13862" target="_blank" rel="noopener">BT-Agent: Onboard Robot Agents with Behavior Trees and Multi-Fidelity Evaluation</a></div>
-        <p class="feed-summary">Proposes BT-Agent combining LLM task decisions with behavior-tree skills for fully onboard operation on quadrupeds using 9B models, enabling responsive execution within compute constraints.</p>
+        <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13862" target="_blank" rel="noopener">BT-Agent: Deploying Onboard Robot Agents with Behavior Trees and Multi-Fidelity Evaluation</a></div>
+        <p class="feed-summary">Introduces BT-Agent, combining LLM-driven task decisions with predefined behavior-tree skills for onboard robot deployment. Demonstrates fully local operation on a quadruped with 9B model, with local checks preventing unsafe navigation.</p>
         <div class="feed-row"><span class="feed-tag tag-ro">cs.RO</span><span class="feed-authors">Hübel, Lilja, Yin</span><a class="pdf-link" href="https://arxiv.org/pdf/2610.13862" target="_blank" rel="noopener">PDF</a></div>
       </div>
     </div>
@@ -402,7 +402,7 @@
       <span class="feed-index">14</span>
       <div>
         <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13812" target="_blank" rel="noopener">Spanning Diffusion and Flow-based Posterior Sampling via Exact Gaussian Conditioning</a></div>
-        <p class="feed-summary">Proposes β-Flow, a general plug-and-play method indexed by correlation parameter β that unifies flow-matching and diffusion priors for linear inverse problems with exact Gaussian conditioning.</p>
+        <p class="feed-summary">Proposes β-Flow, a general plug-and-play method for posterior sampling that unifies flow, diffusion, and decorrelated priors via correlation parameter β and confidence parameter κ. Addresses sparse-data scenarios in inverse problems.</p>
         <div class="feed-row"><span class="feed-tag tag-cv">cs.LG</span><span class="feed-tag tag-cv">cs.CV</span><span class="feed-authors">Deveney, Bogensperger, Wong</span><a class="pdf-link" href="https://arxiv.org/pdf/2610.13812" target="_blank" rel="noopener">PDF</a></div>
       </div>
     </div>
@@ -410,23 +410,23 @@
       <span class="feed-index">15</span>
       <div>
         <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13755" target="_blank" rel="noopener">Matched-Context Group Policy Optimization for LLM Agent Training</a></div>
-        <p class="feed-summary">Proposes MCGPO for credit assignment in long-horizon LLM agents, constructing weighted action preferences from sibling rollouts with context matching and task-rule annotations.</p>
+        <p class="feed-summary">Proposes MCGPO, a credit assignment procedure for long-horizon LLM agents that constructs weighted action preferences from sibling rollouts. Uses pre-action state summaries and observed rubric progress to define meaningful comparison contexts.</p>
         <div class="feed-row"><span class="feed-tag tag-ml">cs.LG</span><span class="feed-tag tag-ml">cs.AI</span><span class="feed-authors">Zhang, Shi, Zhang</span><a class="pdf-link" href="https://arxiv.org/pdf/2610.13755" target="_blank" rel="noopener">PDF</a></div>
       </div>
     </div>
     <div class="feed-item">
       <span class="feed-index">16</span>
       <div>
-        <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13733" target="_blank" rel="noopener">KVeil: Unlearnable Videos via Imperceptible Perturbations</a></div>
-        <p class="feed-summary">First-place ECCV 2026 LifeGenIP Challenge solution protecting facial videos from identity cloning through imperceptible perturbations that degrade reference capacity under limited budgets.</p>
+        <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13733" target="_blank" rel="noopener">KVeil: First-Place Solution to ECCV 2026 LifeGenIP Challenge on Unlearnable Videos</a></div>
+        <p class="feed-summary">Presents the winning solutions for the ECCV 2026 challenge on video privacy protection. Introduces Reference Capacity Collapse losses to degrade facial identity information while maintaining imperceptible perturbations.</p>
         <div class="feed-row"><span class="feed-tag tag-cv">cs.CV</span><span class="feed-venue">ECCV 2026</span><span class="feed-authors">Li, Xing, Li</span><a class="pdf-link" href="https://arxiv.org/pdf/2610.13733" target="_blank" rel="noopener">PDF</a></div>
       </div>
     </div>
     <div class="feed-item">
       <span class="feed-index">17</span>
       <div>
-        <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13732" target="_blank" rel="noopener">LAPT-Scale: Latent Action Pre-Training from Human Videos for Robotic Policies</a></div>
-        <p class="feed-summary">Proposes LAPT-Scale for scalable robotic policy learning from human egocentric videos via latent action discovery, avoiding costly robot action annotation by explaining frame-to-frame transitions.</p>
+        <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13732" target="_blank" rel="noopener">LAPT-Scale: Scaling Embodied Policies with Latent Action Pre-Training on Human Videos</a></div>
+        <p class="feed-summary">Introduces LAPT-Scale, which learns latent actions from large-scale human egocentric videos to pre-train generalist robot policies, bypassing expensive embodied data collection. Combines visual transition modeling with downstream policy adaptation.</p>
         <div class="feed-row"><span class="feed-tag tag-cv">cs.CV</span><span class="feed-tag tag-cv">cs.AI</span><span class="feed-authors">Xiang, Liu, Li</span><a class="pdf-link" href="https://arxiv.org/pdf/2610.13732" target="_blank" rel="noopener">PDF</a></div>
       </div>
     </div>
@@ -434,7 +434,7 @@
       <span class="feed-index">18</span>
       <div>
         <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13649" target="_blank" rel="noopener">Electron-Density-Informed Molecular Property Prediction Using Surrogate Functionals</a></div>
-        <p class="feed-summary">Extends surrogate functional framework to molecular property prediction by passing ground-state electron density as input while simultaneously optimizing density computation within the model.</p>
+        <p class="feed-summary">Extends the surrogate functional framework from orbital-free DFT to molecular property prediction by incorporating ground-state electron density as input. Improves prediction accuracy while reducing quantum mechanical computation cost.</p>
         <div class="feed-row"><span class="feed-tag tag-ml">cs.LG</span><span class="feed-authors">Klockow, Wagner, Remme</span><a class="pdf-link" href="https://arxiv.org/pdf/2610.13649" target="_blank" rel="noopener">PDF</a></div>
       </div>
     </div>
@@ -442,15 +442,15 @@
       <span class="feed-index">19</span>
       <div>
         <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13599" target="_blank" rel="noopener">EchoTab: Learning Measurement-Grounded Representations for Echocardiographic Diagnosis</a></div>
-        <p class="feed-summary">Proposes EchoTab for learning cardiac ultrasound representations by reconstructing quantitative clinical measurements as an intermediate representation between multi-view images and diagnoses.</p>
+        <p class="feed-summary">Proposes EchoTab, which models quantitative measurements as an explicit intermediate representation between multi-view echocardiographic images and diagnoses. Enables downstream tasks to selectively use individual measurements in a structured form.</p>
         <div class="feed-row"><span class="feed-tag tag-ml">cs.LG</span><span class="feed-authors">Liman, Ionac, Müller</span><a class="pdf-link" href="https://arxiv.org/pdf/2610.13599" target="_blank" rel="noopener">PDF</a></div>
       </div>
     </div>
     <div class="feed-item">
       <span class="feed-index">20</span>
       <div>
-        <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13945" target="_blank" rel="noopener">Splat2Act: Personalized VLA Manipulation from Phone Scans</a></div>
-        <p class="feed-summary">Presents Splat2Act, an automated real-to-sim-to-real pipeline that personalizes pre-trained VLA policies to user homes using only phone scans and object photos without real-world robot demonstrations.</p>
+        <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13945" target="_blank" rel="noopener">Splat2Act: From Captured Scenes to Personalized VLA Manipulation</a></div>
+        <p class="feed-summary">Introduces Splat2Act, an automated real-to-sim-to-real pipeline that personalizes pre-trained VLA policies using only handheld phone scans and object images. Achieves successful adaptation without collecting real demonstrations in user environments.</p>
         <div class="feed-row"><span class="feed-tag tag-cv">cs.RO</span><span class="feed-tag tag-cv">cs.CV</span><span class="feed-authors">Ye, Jaganathan, Lim</span><a class="pdf-link" href="https://arxiv.org/pdf/2610.13945" target="_blank" rel="noopener">PDF</a></div>
       </div>
     </div>
@@ -458,7 +458,7 @@
       <span class="feed-index">21</span>
       <div>
         <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13943" target="_blank" rel="noopener">Noise Space Learning for VLA Adaptation</a></div>
-        <p class="feed-summary">Proposes Noise Space Learning (NSL) for adapting flow-matching VLAs by learning context-conditioned noise distributions while keeping pretrained models frozen, accommodating PPO, SAC, and AWR.</p>
+        <p class="feed-summary">Proposes Noise Space Learning (NSL), which adapts flow-matching VLAs by learning context-conditioned noise distributions while keeping the pretrained model frozen. Instantiates NSL with PPO, SAC, and AWR with theoretical information-theoretic guarantees.</p>
         <div class="feed-row"><span class="feed-tag tag-ro">cs.RO</span><span class="feed-authors">Lu, Zhang, Wang</span><a class="pdf-link" href="https://arxiv.org/pdf/2610.13943" target="_blank" rel="noopener">PDF</a></div>
       </div>
     </div>
@@ -466,15 +466,15 @@
       <span class="feed-index">22</span>
       <div>
         <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13941" target="_blank" rel="noopener">Images Talk Back: Guiding MMDiTs by Suppressing Image-to-Text Feedback</a></div>
-        <p class="feed-summary">Analyzes how image-to-text feedback in multimodal diffusion transformers can preserve errors already in the evolving image, showing suppression improves generation quality over matched baselines.</p>
+        <p class="feed-summary">Investigates image-to-text feedback in multimodal diffusion transformers, finding it can preserve errors from evolving images. Proposes suppressing I2T influence improves generation quality by preventing error perpetuation.</p>
         <div class="feed-row"><span class="feed-tag tag-cv">cs.CV</span><span class="feed-authors">Yang, Sun, Yang</span><a class="pdf-link" href="https://arxiv.org/pdf/2610.13941" target="_blank" rel="noopener">PDF</a></div>
       </div>
     </div>
     <div class="feed-item">
       <span class="feed-index">23</span>
       <div>
-        <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13935" target="_blank" rel="noopener">Hide and Seek: Concept Attribution for Black-Box Models</a></div>
-        <p class="feed-summary">Proposes HnS, a concept-based attribution method requiring no model weights or labeled concept datasets, enabling image-level explanations for wide range of black-box vision models.</p>
+        <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13935" target="_blank" rel="noopener">Hide and Seek: HIDE Concepts to SEEK explanations for black box models</a></div>
+        <p class="feed-summary">Proposes Hide and Seek (HnS), a concept-based attribution method for black-box vision models requiring no weight access or labeled concept datasets. Provides image-level explanations across classification, detection, and segmentation tasks.</p>
         <div class="feed-row"><span class="feed-tag tag-cv">cs.CV</span><span class="feed-tag tag-cv">cs.AI</span><span class="feed-authors">Tokas, Nair, Jackson</span><a class="pdf-link" href="https://arxiv.org/pdf/2610.13935" target="_blank" rel="noopener">PDF</a></div>
       </div>
     </div>
@@ -482,7 +482,7 @@
       <span class="feed-index">24</span>
       <div>
         <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13929" target="_blank" rel="noopener">Chronos Policy: Learning Robot Policies on Physical Time</a></div>
-        <p class="feed-summary">Introduces Chronos Policy making physical time explicit by conditioning on observation capture and action execution times, using time-aware rotary positional encodings in diffusion transformers.</p>
+        <p class="feed-summary">Introduces Chronos Policy, which makes physical time explicit by conditioning on observation capture and desired action execution times. Enables robustness to variable observation rates, delays, and inference latency using time-aware positional encodings.</p>
         <div class="feed-row"><span class="feed-tag tag-cv">cs.RO</span><span class="feed-tag tag-cv">cs.CV</span><span class="feed-authors">Wang, Clark, Song</span><a class="pdf-link" href="https://arxiv.org/pdf/2610.13929" target="_blank" rel="noopener">PDF</a></div>
       </div>
     </div>
@@ -490,7 +490,7 @@
       <span class="feed-index">25</span>
       <div>
         <div class="feed-title"><a class="paper-link" href="https://arxiv.org/abs/2610.13925" target="_blank" rel="noopener">Can machines reason non-verbally?</a></div>
-        <p class="feed-summary">Explores why advanced AI systems struggle with visual non-verbal reasoning tasks like pattern completion and region delineation despite strong verbal reasoning, identifying challenges in verification.</p>
+        <p class="feed-summary">Examines visual non-verbal reasoning capabilities in modern foundation models, demonstrating limitations in abstract pattern completion and ambiguous region delineation. Argues for systematic approaches to verify implicit visual reasoning steps.</p>
         <div class="feed-row"><span class="feed-tag tag-cv">cs.CV</span><span class="feed-authors">Saeed, Tse, Slabaugh</span><a class="pdf-link" href="https://arxiv.org/pdf/2610.13925" target="_blank" rel="noopener">PDF</a></div>
       </div>
     </div>
@@ -500,18 +500,18 @@
     <div class="sidebar-section">
       <div class="sidebar-eyebrow" style="color:var(--amber)">Featured Researcher</div>
       
-    <div class="researcher-avatar" style="background:rgba(200,144,240,0.15);color:#C890F0">SL</div>
-    <div class="researcher-name">Shuran Song</div>
-    <div class="researcher-role">Robotics Researcher · Columbia University</div>
-    <p class="researcher-bio">Shuran Song directs research in robot learning, focusing on bridging simulation and real-world manipulation through vision and language. Her lab has pioneered VLA-based approaches for generalizable robotic control, recently culminating in practical methods like Chronos Policy that make physical time explicit in robot decision-making. Featured today for advancing deployment-ready robotic agents that adapt to real homes and users.</p>
+    <div class="researcher-avatar" style="background:rgba(0,200,224,0.15);color:#00C8E0">XK</div>
+    <div class="researcher-name">Xuhui Kang</div>
+    <div class="researcher-role">Roboticist · Embodied AI</div>
+    <p class="researcher-bio">Kang specializes in adapting pre-trained robot policies to new tasks with limited data, focusing on representation alignment under distribution shift. His work bridges vision-language models and embodied manipulation, particularly through retrieval-anchored methods that preserve generalization. Featured today for RARA's innovative approach to robust policy fine-tuning, which addresses a critical pain point in scaling robot learning: maintaining learned priors while adapting to novel environments.</p>
     <div class="researcher-stats">
-      <div class="r-stat"><div class="r-stat-num">2,100+</div><div class="r-stat-label">Citations</div></div>
-      <div class="r-stat"><div class="r-stat-num" style="font-size:11px;padding-top:2px">ICRA 2024</div><div class="r-stat-label">Latest venue</div></div>
+      <div class="r-stat"><div class="r-stat-num">300+</div><div class="r-stat-label">Citations</div></div>
+      <div class="r-stat"><div class="r-stat-num" style="font-size:11px;padding-top:2px">CoRL</div><div class="r-stat-label">Latest venue</div></div>
     </div>
-    <div class="r-paper"><a class="paper-link" href="https://arxiv.org/abs/2610.13929" target="_blank" rel="noopener"><div class="r-paper-title">Chronos Policy: Learning Robot Policies on Physical Time</div></a>
+    <div class="r-paper"><a class="paper-link" href="https://arxiv.org/abs/2610.13578" target="_blank" rel="noopener"><div class="r-paper-title">RARA: Robust Policy Fine-Tuning through Representation Alignment</div></a>
       <div class="r-paper-links">
         <span class="r-paper-venue">arXiv</span>
-        <a class="pdf-link" href="https://arxiv.org/pdf/2610.13929" target="_blank" rel="noopener">PDF</a>
+        <a class="pdf-link" href="https://arxiv.org/pdf/2610.13578" target="_blank" rel="noopener">PDF</a>
       </div>
     </div>
     </div>
@@ -521,42 +521,42 @@
     <div class="trend-item">
       <span class="trend-rank">01</span>
       <div class="trend-info">
-        <div class="trend-field">Robotics & Embodiment</div>
+        <div class="trend-field">Robot Learning & Embodied AI</div>
         <div class="trend-count">8 papers this week</div>
       </div>
-      <div class="spark"><div class="spark-b" style="height:7px"></div><div class="spark-b" style="height:9px"></div><div class="spark-b" style="height:11px"></div><div class="spark-b" style="height:10px"></div><div class="spark-b" style="height:8px"></div></div>
+      <div class="spark"><div class="spark-b" style="height:7px"></div><div class="spark-b" style="height:9px"></div><div class="spark-b" style="height:11px"></div><div class="spark-b" style="height:10px"></div><div class="spark-b" style="height:12px"></div></div>
     </div>
     <div class="trend-item">
       <span class="trend-rank">02</span>
       <div class="trend-info">
-        <div class="trend-field">Computer Vision</div>
-        <div class="trend-count">10 papers this week</div>
+        <div class="trend-field">Multimodal & Vision-Language Models</div>
+        <div class="trend-count">7 papers this week</div>
       </div>
-      <div class="spark"><div class="spark-b" style="height:8px"></div><div class="spark-b" style="height:11px"></div><div class="spark-b" style="height:13px"></div><div class="spark-b" style="height:12px"></div><div class="spark-b" style="height:9px"></div></div>
+      <div class="spark"><div class="spark-b" style="height:6px"></div><div class="spark-b" style="height:8px"></div><div class="spark-b" style="height:10px"></div><div class="spark-b" style="height:9px"></div><div class="spark-b" style="height:11px"></div></div>
     </div>
     <div class="trend-item">
       <span class="trend-rank">03</span>
       <div class="trend-info">
-        <div class="trend-field">Machine Learning Theory</div>
+        <div class="trend-field">LLM Agents & Tool Use</div>
         <div class="trend-count">6 papers this week</div>
       </div>
-      <div class="spark"><div class="spark-b" style="height:5px"></div><div class="spark-b" style="height:7px"></div><div class="spark-b" style="height:8px"></div><div class="spark-b" style="height:6px"></div><div class="spark-b" style="height:5px"></div></div>
+      <div class="spark"><div class="spark-b" style="height:5px"></div><div class="spark-b" style="height:8px"></div><div class="spark-b" style="height:9px"></div><div class="spark-b" style="height:8px"></div><div class="spark-b" style="height:10px"></div></div>
     </div>
     <div class="trend-item">
       <span class="trend-rank">04</span>
       <div class="trend-info">
-        <div class="trend-field">Multimodal & VLMs</div>
-        <div class="trend-count">7 papers this week</div>
+        <div class="trend-field">Generative & Diffusion Models</div>
+        <div class="trend-count">5 papers this week</div>
       </div>
-      <div class="spark"><div class="spark-b" style="height:6px"></div><div class="spark-b" style="height:8px"></div><div class="spark-b" style="height:10px"></div><div class="spark-b" style="height:9px"></div><div class="spark-b" style="height:7px"></div></div>
+      <div class="spark"><div class="spark-b" style="height:4px"></div><div class="spark-b" style="height:7px"></div><div class="spark-b" style="height:8px"></div><div class="spark-b" style="height:7px"></div><div class="spark-b" style="height:9px"></div></div>
     </div>
     <div class="trend-item">
       <span class="trend-rank">05</span>
       <div class="trend-info">
-        <div class="trend-field">AI Safety & Security</div>
-        <div class="trend-count">3 papers this week</div>
+        <div class="trend-field">Security, Privacy & Interpretability</div>
+        <div class="trend-count">4 papers this week</div>
       </div>
-      <div class="spark"><div class="spark-b" style="height:4px"></div><div class="spark-b" style="height:5px"></div><div class="spark-b" style="height:3px"></div><div class="spark-b" style="height:4px"></div><div class="spark-b" style="height:2px"></div></div>
+      <div class="spark"><div class="spark-b" style="height:3px"></div><div class="spark-b" style="height:5px"></div><div class="spark-b" style="height:6px"></div><div class="spark-b" style="height:5px"></div><div class="spark-b" style="height:7px"></div></div>
     </div></div>
     </div>
     <div class="sidebar-section">
@@ -570,7 +570,7 @@
 
 <footer class="footer">
   <span>arXiv CS Digest — generated nightly with Claude claude-haiku-4-5-20251001</span>
-  <span>Built 2026-10-12 02:23:46 UTC · <a href="https://arxiv.org/list/cs/recent" style="color:var(--cyan);text-decoration:none">arxiv.org</a></span>
+  <span>Built 2026-10-13 03:32:56 UTC · <a href="https://arxiv.org/list/cs/recent" style="color:var(--cyan);text-decoration:none">arxiv.org</a></span>
 </footer>
 </body>
 </html>
